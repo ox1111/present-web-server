@@ -24,8 +24,8 @@ def helloworld():
 def send_mail():
 	try:
 		msg = Message(request.form['subject'],
-		  sender=config.EMAIL_CONFIG['email'],
-		  recipients=[request.form['email']])
+		  sender='('+request.form['name']+')'+request.form['email'],
+		  recipients=[config.EMAIL_CONFIG['email']])
 		msg.body = request.form['message']
 		mail.send(msg)
 		return 'Mail sent'
