@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, request
 from flask_mail import Mail, Message
 import config
 
@@ -19,13 +19,13 @@ mail = Mail(app)
 def helloworld():
     return "Hello World"
 
-@app.route('/send-mail/')
+@app.route('/send-mail/', methods=["POST"])
 def send_mail():
 	try:
 		msg = Message("Send Mail Tutorial!",
 		  sender=config.EMAIL_CONFIG['email'],
-		  recipients=["where-to-send"])
-		msg.body = "Sending mail test"           
+		  recipients=[request.form['email']])
+		msg.body = request.form['content']
 		mail.send(msg)
 		return 'Mail sent'
 	except Exception as e:
