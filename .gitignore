@@ -123,3 +123,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 © 2019 GitHub, Inc.
+
+# User Setting
+config.py
