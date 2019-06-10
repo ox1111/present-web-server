@@ -23,10 +23,10 @@ def helloworld():
 @app.route('/send-mail/', methods=["POST"])
 def send_mail():
 	try:
-		msg = Message("Send Mail Tutorial!",
+		msg = Message(request.form['subject'],
 		  sender=config.EMAIL_CONFIG['email'],
 		  recipients=[request.form['email']])
-		msg.body = request.form['content']
+		msg.body = request.form['message']
 		mail.send(msg)
 		return 'Mail sent'
 	except Exception as e:
