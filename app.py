@@ -1,6 +1,6 @@
 from flask import Flask, request
 from flask_mail import Mail, Message
-from flask_cors import CORS # CORS 처리
+from flask_cors import CORS # CORS
 import config
 
 app = Flask(__name__)
@@ -12,7 +12,7 @@ app.config.update(
 	MAIL_USERNAME = config.EMAIL_CONFIG['email'],
 	MAIL_PASSWORD = config.EMAIL_CONFIG['password']
 	)
-CORS(app) # CORS 처리
+CORS(app) # CORS
 mail = Mail(app)
 
 
